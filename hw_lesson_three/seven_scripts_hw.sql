@@ -83,4 +83,15 @@ WHERE
         employees.salaries);
 
 -- 4. Посчитать количество сотрудников во всех отделах.
+
+SELECT 
+    d.*, COUNT(e.emp_no) AS staff_no
+FROM
+    employees.employees e
+        JOIN
+    employees.dept_emp d_e ON e.emp_no = d_e.emp_no
+        JOIN
+    employees.departments d ON d_e.dept_no = d.dept_no
+GROUP BY d.dept_no;
+
 -- 5. Найти количество сотрудников в отделах и посмотреть, сколько всего денег получает отдел.
