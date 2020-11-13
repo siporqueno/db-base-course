@@ -1,0 +1,18 @@
+﻿1. Настроить и запустить master-сервер.
+
+Смотри файл task_1_screen_1.jpg
+
+2. Установить MongoDB и повторить запросы из методички.
+
+Смотри следующие файлы:
+
+task_2_screen_1.jpg
+Сделал выборку с условием restaurant_id < 35000000
+Сделал выборку с условиями address.building равен 768, а address.street равен Fifth Avenue или 5 Avenue
+
+
+Смотри файл task_2_screen_2.jpg
+Сделал выборку с условием cuisine равна Italian, а borough равно Manhattan или Bronx 
+
+Смотри файл task_2_screen_3.jpg
+Сделал выборку с условием cuisine не равна Italian, а borough не равно Brooklyn или Bronx 
