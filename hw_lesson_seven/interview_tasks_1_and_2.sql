@@ -116,23 +116,24 @@ FROM
 WHERE
     lu5.liker_user_id IS NULL;
 
--- Теперь пытаемся соединить в одно
-
+-- Теперь соединяем два запроса в один
 SELECT 
-    *
+    u.*
 FROM
     (SELECT 
         *
     FROM
         like_user_to_user.like_user lu
     WHERE
-        lu.liked_user_id = 5) AS lu5
+        lu.liked_user_id = 5) AS lu_liked5
         RIGHT JOIN
-    like_user_to_user.like_user lu1 ON lu5.liker_user_id = lu1.liker_user_id JOIN like_user_to_user.`user`
+    like_user_to_user.like_user lu1 ON lu_liked5.liker_user_id = lu1.liker_user_id
+        JOIN
+    like_user_to_user.`user` u ON lu1.liker_user_id = u.id
 WHERE
-    (lu5.liker_user_id IS NULL
+    (lu_liked5.liker_user_id IS NULL
         AND lu1.liked_user_id = 4)
-        OR (lu5.liker_user_id IS NULL
+        OR (lu_liked5.liker_user_id IS NULL
         AND lu1.liked_user_id = 6)
 GROUP BY lu1.liker_user_id
 HAVING COUNT(lu1.liker_user_id) = 2;
